@@ -1,0 +1,22 @@
+{
+  "name": "certification_project_cypress",
+  "version": "1.0.0",
+  "description": "cypress certification project",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saltigrade/certification_project_cypress.git"
+  },
+  "author": "Sabina Parikova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saltigrade/certification_project_cypress/issues"
+  },
+  "homepage": "https://github.com/saltigrade/certification_project_cypress#readme",
+  "devDependencies": {
+    "cypress": "^13.6.0"
+  }
+}
