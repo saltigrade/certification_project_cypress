@@ -1,11 +1,11 @@
-const { LoginPage } = require("../../page-objects/tegb/login_page");
+import { TegbLoginPage } from "../../page-objects/tegb/login_page";
 
 describe("Login page tests", () => {
   beforeEach(() => {
-    new LoginPage().openTegb();
+    new TegbLoginPage().openTegb();
   });
-  it("Login into tegb", () => {
-    new LoginPage()
+  it("Login into TegB", () => {
+    new TegbLoginPage()
       .pageHeaderIsVisible()
       .logoIsVisible()
       .typeUsername(Cypress.env("tegb_username"))

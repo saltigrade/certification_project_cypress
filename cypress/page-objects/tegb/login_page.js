@@ -1,6 +1,6 @@
-import { HomePage } from "./home_page";
+import { DashboardPage, HomePage } from "./dashboard_page";
 
-export class LoginPage {
+export class TegbLoginPage {
   constructor() {
     this.tegbUrl = "https://tegb-frontend-88542200c6db.herokuapp.com/";
     this.usernameInput = '[data-testid="username-input"]';
@@ -10,6 +10,8 @@ export class LoginPage {
     this.forgetPasswordButton = '[data-testid="registration-link"]';
     this.pageHeader = "h1.title";
     this.logo = "img.logo";
+    cy.intercept("/tegb/profile").as("profile_api");
+    cy.intercept("/tegb/accounts").as("accounts_api");
   }
 
   openTegb() {
@@ -26,7 +28,7 @@ export class LoginPage {
   }
   clickLogin() {
     cy.get(this.loginButton).click();
-    return new HomePage();
+    return new DashboardPage();
   }
   pageHeaderIsVisible() {
     cy.get(this.pageHeader).should("be.visible");
