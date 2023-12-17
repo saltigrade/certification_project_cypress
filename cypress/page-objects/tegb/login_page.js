@@ -10,6 +10,7 @@ export class TegbLoginPage {
     this.forgetPasswordButton = '[data-testid="registration-link"]';
     this.pageHeader = "h1.title";
     this.logo = "img.logo";
+    cy.intercept("/tegb/login").as("login_api");
     cy.intercept("/tegb/profile").as("profile_api");
     cy.intercept("/tegb/accounts").as("accounts_api");
   }
