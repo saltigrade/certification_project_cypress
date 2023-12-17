@@ -1,5 +1,5 @@
 export class AccountsApi {
-  createAccount(token, balance, userId) {
+  createAccount(token, userId, startBalance, type) {
     return cy.request({
       method: "POST",
       url: "https://tegb-backend-877a0b063d29.herokuapp.com/tegb/accounts/create",
@@ -8,12 +8,8 @@ export class AccountsApi {
       },
       body: {
         userId: userId,
-        accountNumber: "1000008",
-        accountType: "Test",
-        balance: balance,
-        status: "Active",
-        accountId: 8,
-        createdDate: "2023-11-30T13:59:18.000Z",
+        startBalance: startBalance,
+        type: type,
       },
     });
   }

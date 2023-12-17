@@ -13,17 +13,11 @@ describe("TegB User Tests", () => {
     cy.log(username);
     cy.log(password);
     cy.log(email);
-    // cy.visit("https://tegb-backend-877a0b063d29.herokuapp.com/tegb/login");
   });
 
   it("Register and login via API", () => {
     let user = new UserApi();
     user.register(username, password, email);
     user.login(username, password);
-    // .as("login_response");
-    // cy.get("@login_response").then((response) => {
-    //   cy.setCookie("access_token", response.body.access_token);
-    // });
-    // cy.visit("https://tegb-frontend-88542200c6db.herokuapp.com/dashboard");
   });
 });

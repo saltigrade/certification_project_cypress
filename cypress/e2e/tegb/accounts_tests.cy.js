@@ -11,6 +11,9 @@ describe("Accounts tests in Tegb", () => {
       .waitForLoginApi();
   });
   it("Accounts", () => {
-    new DashboardPage().clickAddAccount().waitForAccountsApi();
+    new DashboardPage()
+      .waitForProfileApi()
+      .clickAddAccount()
+      .waitForAccountsApi();
   });
 });

@@ -5,7 +5,26 @@ export class DashboardPage {
     this.addAccountButton = "button.account-action";
   }
   waitForLoginApi() {
-    cy.wait("@profile_api");
+    cy.wait("@login_api").its("request.method").should("eq", "POST");
+    // .its("response.statusCode")
+    // .should("eq", 201);
+  }
+  // Snaha provézt v jedné metodě či funkci cy.wait více its nebo více should
+  // haveLoginInfo() {
+  //   cy.get("@login_api").should(({ request, response }) => {
+  //     expect(request.method).to.eq("POST");
+  //     expect(response.statusCode).to.eq(201);
+  //   });
+  //}
+  // Z CYPRESS DOKUMENTACE
+  //and we can place multiple assertions in a
+  // single "should" callback
+  //cy.get('@new-user').should(({ request, response }) => {
+  // expect(request.url).to.match(/\/users$/)
+  //expect(request.method).to.equal('POST')
+
+  waitForProfileApi() {
+    cy.wait("@profile_api").its("request.method").should("eq", "GET");
     return this;
   }
 
@@ -14,22 +33,3 @@ export class DashboardPage {
     return new AccountsPage();
   }
 }
-
-// export class DashboardPage {
-//   constructor() {
-//     this.accountsButton = '[data-testid="accounts_section_link"]';
-//   }
-
-//   waitForLoginApi() {
-//     cy.wait("@login_api");
-//     return this;
-//   }
-
-//   clickAccounts() {
-//     cy.get(this.accountsButton).click();
-//     return new AccountsPage();
-//   }
-// }
-//     return new AccountsPage();
-//   }
-// }
