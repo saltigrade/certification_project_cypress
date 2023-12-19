@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import { UserApi } from "../../page-objects/tegb/user_api";
 
-describe("TegB User Tests", () => {
+describe("TegB User API Tests", () => {
   let username;
   let password;
   let email;
@@ -17,7 +17,7 @@ describe("TegB User Tests", () => {
     cy.visit("https://tegb-frontend-88542200c6db.herokuapp.com/");
   });
 
-  it("Register and login via API", () => {
+  it("Register and login with set cookie, check status", () => {
     let user = new UserApi();
     user.register(username, password, email).then((response) => {
       expect(response.body.email).to.be.a("string");

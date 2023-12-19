@@ -1,4 +1,5 @@
 import { AccountsPage } from "./accounts_page";
+import { TegbLoginPage } from "./login_page";
 
 export class DashboardPage {
   constructor() {
@@ -10,7 +11,12 @@ export class DashboardPage {
     this.telephoneInput = "input[data-testid='chage-phone-input']";
     this.ageInput = "input[data-testid='chage-age-input']";
     this.saveChangesButton = "button[data-testid='save-changes-button']";
+    this.accountNumber = "td[data-testid='account-number']";
+    this.accountBalance = "td[data-testid='account-balance']";
+    this.accountType = "td[data-testid='account-type']";
+    this.logoutButton = "button.logout-link";
   }
+
   waitForLoginApi() {
     cy.wait("@login_api").its("request.method").should("eq", "POST");
     // .its("response.statusCode")
@@ -81,6 +87,34 @@ export class DashboardPage {
   ageHasValue(value) {
     cy.get(this.ageInput).should("have.value", value);
     return this;
+  }
+  accountNumberHasText(numberText) {
+    cy.get(this.accountNumber).should("have.text", numberText);
+    return this;
+  }
+  accountBalanceHasText(numberBalance) {
+    cy.get(this.accountBalance).should("have.text", numberBalance);
+    return this;
+  }
+  accountTypeHasText(text) {
+    cy.get(this.accountType).should("have.text", text);
+    return this;
+  }
+  accountNumberIsVisible() {
+    cy.get(this.accountNumber).should("be.visible");
+    return this;
+  }
+  accountBalanceIsVisible() {
+    cy.get(this.accountBalance).should("be.visible");
+    return this;
+  }
+  accountTypeIsVisible() {
+    cy.get(this.accountType).should("be.visible");
+    return this;
+  }
+  clickLogout() {
+    cy.get(this.logoutButton).click();
+    return new TegbLoginPage();
   }
 
   clickAddAccount() {

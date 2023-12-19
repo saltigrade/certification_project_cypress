@@ -1,10 +1,10 @@
 import { TegbLoginPage } from "../../page-objects/tegb/login_page";
 
-describe("Login page tests", () => {
+describe("E2E test TegB", () => {
   beforeEach(() => {
     new TegbLoginPage().openTegb();
   });
-  it("Login into TegB", () => {
+  it("Login, profile create and check, account check, logout", () => {
     new TegbLoginPage()
       .pageHeaderIsVisible()
       .logoIsVisible()
@@ -23,6 +23,13 @@ describe("Login page tests", () => {
       .lastNameHasValue("Parik")
       .emailHasValue("sapa@example.org")
       .telephoneHasValue("+420601602603")
-      .ageHasValue(21);
+      .ageHasValue(21)
+      .accountNumberIsVisible()
+      .accountNumberHasText(1000283)
+      .accountBalanceIsVisible()
+      .accountBalanceHasText("10000.00 Kč")
+      .accountTypeIsVisible()
+      .accountTypeHasText("Test")
+      .clickLogout();
   });
 });
