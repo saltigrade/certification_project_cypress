@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import { UserApi } from "../../page-objects/tegb/user_api";
 
-describe("TegB User Tests", () => {
+describe("TegB User API Tests", () => {
   let username;
   let password;
   let email;
@@ -15,7 +15,7 @@ describe("TegB User Tests", () => {
     cy.log(email);
   });
 
-  it("Register and login via API", () => {
+  it("Register and login", () => {
     let user = new UserApi();
     user.register(username, password, email);
     user.login(username, password);

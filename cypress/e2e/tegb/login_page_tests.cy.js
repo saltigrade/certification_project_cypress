@@ -1,6 +1,6 @@
 import { TegbLoginPage } from "../../page-objects/tegb/login_page";
 
-describe("Login page tests", () => {
+describe("TegB login page tests FE", () => {
   beforeEach(() => {
     new TegbLoginPage().openTegb();
   });

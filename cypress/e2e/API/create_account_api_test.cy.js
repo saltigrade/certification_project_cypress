@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import { UserApi } from "../../page-objects/tegb/user_api";
 import { AccountsApi } from "../../page-objects/tegb/accounts_api";
 
-describe("Accounts Tests via BE", () => {
+describe("TegB User and Account API tests", () => {
   let username;
   let password;
   let email;
@@ -16,7 +16,7 @@ describe("Accounts Tests via BE", () => {
     cy.log(email);
     cy.visit("https://tegb-frontend-88542200c6db.herokuapp.com/");
   });
-  it("Create user and account", () => {
+  it("Register, login with set cookie and create account", () => {
     let startBalance = 10000;
     let type = "Test";
     let user = new UserApi();
