@@ -1,7 +1,7 @@
 import { DashboardPage } from "../../page-objects/tegb/dashboard_page";
 import { TegbLoginPage } from "../../page-objects/tegb/login_page";
 
-describe("Accounts tests in Tegb", () => {
+describe("Wait for api login,profile and accounts in Tegb", () => {
   beforeEach(() => {
     new TegbLoginPage()
       .openTegb()
@@ -10,7 +10,7 @@ describe("Accounts tests in Tegb", () => {
       .clickLogin()
       .waitForLoginApi();
   });
-  it("Accounts", () => {
+  it("Wait for accounts api", () => {
     new DashboardPage()
       .waitForProfileApi()
       .clickAddAccount()
