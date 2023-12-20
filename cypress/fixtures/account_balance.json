@@ -1,0 +1,27 @@
+[
+  {
+    "description": "Test 1",
+    "startBalance": "0 Kč",
+    "type": "Test"
+  },
+  {
+    "description": "Test 2",
+    "startBalance": "200 000,52 Kč",
+    "type": "Test"
+  },
+  {
+    "description": "Test 3",
+    "startBalance": "- 12 345.00 Kč",
+    "type": "Test"
+  },
+  {
+    "description": "Test 4",
+    "startBalance": "- 196 000 921 Kč",
+    "type": "Test"
+  },
+  {
+    "description": "Test 5",
+    "startBalance": "298 000 123 Kč",
+    "type": "Test"
+  }
+]
