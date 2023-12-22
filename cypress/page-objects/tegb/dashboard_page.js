@@ -1,9 +1,10 @@
 import { AccountsPage } from "./accounts_page";
 import { TegbLoginPage } from "./login_page";
+import { createCustomElement } from "../../helpers/custom_element";
 
 export class DashboardPage {
   constructor() {
-    this.addAccountButton = "button.account-action";
+    this.addAccountButton = createCustomElement("button.account-action");
     this.adjustProfileButton = "button.profile-action";
     this.firstNameInput = "input[data-testid='chage-name-input']";
     this.lastNameInput = "input[data-testid='chage-surname-input']";
@@ -15,6 +16,13 @@ export class DashboardPage {
     this.accountBalance = "td[data-testid='account-balance']";
     this.accountType = "td[data-testid='account-type']";
     this.logoutButton = "button.logout-link";
+    this.pageHeader = createCustomElement("span.app-title");
+    this.logo = createCustomElement("img.logo");
+    this.menuFirstItem = createCustomElement("li:nth-child(1)");
+    this.menuSecondItem = createCustomElement("li:nth-child(2)");
+    this.menuThirdItem = createCustomElement("li:nth-child(3)");
+    this.menuFourthItem = createCustomElement("li:nth-child(4)");
+    // selektory pro details in profile - jméno včetně výplněného jména: div.profile-detail[data-testid='name']
   }
 
   waitForLoginApi() {
@@ -121,4 +129,30 @@ export class DashboardPage {
     cy.get(this.addAccountButton).click();
     return new AccountsPage();
   }
+  addAccountIsVisible() {
+    this.addAccountButton.get().should("be.visible");
+    return new AccountsPage();
+  }
+  firstItem() {
+    this.menuFirstItem.isVisible().hasText("Domů");
+  }
+  secondItem() {
+    this.menuSecondItem.isVisible().hasText("Účty");
+  }
+  thirdItem() {
+    this.menuThirdItem.isVisible().hasText("Transakce");
+  }
+  fourthItem() {
+    this.menuFourthItem.isVisible().hasText("Podpora");
+  }
+  checkPageHeader() {
+    this.pageHeader.isVisible().hasText("TEG#B Dashboard");
+  }
+  logoIsVisible() {
+    this.logo.isVisible();
+  }
 }
+
+//  usernameIsVisible() {
+//     this.usernameInput.get().should("be.visible");
+//     return this;
