@@ -12,9 +12,13 @@ export class DashboardPage {
     this.telephoneInput = "input[data-testid='chage-phone-input']";
     this.ageInput = "input[data-testid='chage-age-input']";
     this.saveChangesButton = "button[data-testid='save-changes-button']";
-    this.accountNumber = "td[data-testid='account-number']";
-    this.accountBalance = "td[data-testid='account-balance']";
-    this.accountType = "td[data-testid='account-type']";
+    this.accountNumber = createCustomElement(
+      "td[data-testid='account-number']"
+    );
+    this.accountBalance = createCustomElement(
+      "td[data-testid='account-balance']"
+    );
+    this.accountType = createCustomElement("td[data-testid='account-type']");
     this.logoutButton = "button.logout-link";
     this.pageHeader = createCustomElement("span.app-title");
     this.logo = createCustomElement("img.logo");
@@ -22,7 +26,21 @@ export class DashboardPage {
     this.menuSecondItem = createCustomElement("li:nth-child(2)");
     this.menuThirdItem = createCustomElement("li:nth-child(3)");
     this.menuFourthItem = createCustomElement("li:nth-child(4)");
-    // selektory pro details in profile - jméno včetně výplněného jména: div.profile-detail[data-testid='name']
+    this.firstNameDetail = createCustomElement(
+      "div.profile-detail[data-testid='name']"
+    );
+    this.lastNameDetail = createCustomElement(
+      "div.profile-detail[data-testid='surname']"
+    );
+    this.emailDetail = createCustomElement(
+      "div.profile-detail[data-testid='email']"
+    );
+    this.telephoneDetail = createCustomElement(
+      "div.profile-detail[data-testid='phone']"
+    );
+    this.ageDetail = createCustomElement(
+      "div.profile-detail[data-testid='age']"
+    );
   }
 
   waitForLoginApi() {
@@ -96,63 +114,86 @@ export class DashboardPage {
     cy.get(this.ageInput).should("have.value", value);
     return this;
   }
+
   accountNumberHasText(numberText) {
-    cy.get(this.accountNumber).should("have.text", numberText);
+    this.accountNumber.get().should("have.text", numberText);
     return this;
   }
   accountBalanceHasText(numberBalance) {
-    cy.get(this.accountBalance).should("have.text", numberBalance);
+    this.accountBalance.get().should("have.text", numberBalance);
     return this;
   }
   accountTypeHasText(text) {
-    cy.get(this.accountType).should("have.text", text);
+    this.accountType.get().should("have.text", text);
     return this;
   }
   accountNumberIsVisible() {
-    cy.get(this.accountNumber).should("be.visible");
+    this.accountNumber.get().should("be.visible");
     return this;
   }
   accountBalanceIsVisible() {
-    cy.get(this.accountBalance).should("be.visible");
+    this.accountBalance.get().should("be.visible");
     return this;
   }
   accountTypeIsVisible() {
-    cy.get(this.accountType).should("be.visible");
+    this.accountType.get().should("be.visible");
     return this;
   }
+
   clickLogout() {
     cy.get(this.logoutButton).click();
     return new TegbLoginPage();
   }
 
   clickAddAccount() {
-    cy.get(this.addAccountButton).click();
+    this.addAccountButton.get().click();
     return new AccountsPage();
   }
   addAccountIsVisible() {
     this.addAccountButton.get().should("be.visible");
     return new AccountsPage();
   }
-  firstItem() {
-    this.menuFirstItem.isVisible().hasText("Domů");
+  accountNumberCheck(number) {
+    this.accountNumber.isExisting().isVisible().hasText(number);
   }
-  secondItem() {
-    this.menuSecondItem.isVisible().hasText("Účty");
+  accountBalanceCheck(balance) {
+    this.accountBalance.isExisting().isVisible().hasText(balance);
   }
-  thirdItem() {
-    this.menuThirdItem.isVisible().hasText("Transakce");
+  accountTypeCheck(type) {
+    this.accountType.isExisting().isVisible().hasText(type);
   }
-  fourthItem() {
-    this.menuFourthItem.isVisible().hasText("Podpora");
+
+  firstItem(firstItem) {
+    this.menuFirstItem.isExisting().isVisible().hasText(firstItem);
   }
-  checkPageHeader() {
-    this.pageHeader.isVisible().hasText("TEG#B Dashboard");
+  secondItem(secondItem) {
+    this.menuSecondItem.isExisting().isVisible().hasText(secondItem);
+  }
+  thirdItem(thirdItem) {
+    this.menuThirdItem.isExisting().isVisible().hasText(thirdItem);
+  }
+  fourthItem(fourtItem) {
+    this.menuFourthItem.isExisting().isVisible().hasText(fourtItem);
+  }
+  checkPageHeader(headerText) {
+    this.pageHeader.isExisting().isVisible().hasText(headerText);
   }
   logoIsVisible() {
     this.logo.isVisible();
   }
+  firstNameCheck(firstName) {
+    this.firstNameDetail.isExisting().isVisible().containsText(firstName);
+  }
+  lastNameCheck(lastName) {
+    this.lastNameDetail.isExisting().isVisible().containsText(lastName);
+  }
+  emailCheck(email) {
+    this.emailDetail.isExisting().isVisible().containsText(email);
+  }
+  telephoneCheck(phone) {
+    this.telephoneDetail.isExisting().isVisible().containsText(phone);
+  }
+  ageCheck(age) {
+    this.ageDetail.isExisting().isVisible().containsText(age);
+  }
 }
-
-//  usernameIsVisible() {
-//     this.usernameInput.get().should("be.visible");
-//     return this;

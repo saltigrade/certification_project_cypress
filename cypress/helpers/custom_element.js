@@ -8,6 +8,10 @@ export const createCustomElement = (selector) => {
       cy.get(selector).should("not.be.visible");
       return element;
     },
+    isExisting() {
+      cy.get(selector).should("exist");
+      return element;
+    },
     hasText(text) {
       cy.get(selector).should("have.text", text);
       return element;
