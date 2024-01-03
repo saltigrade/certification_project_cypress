@@ -121,4 +121,12 @@ export class DashboardPage {
     cy.get(this.addAccountButton).click();
     return new AccountsPage();
   }
+  typeAccountBalance(startBalance) {
+    cy.get(this.accountBalance).type(startBalance);
+    return this;
+  }
+  typeAccountType(type) {
+    cy.get(this.accountType).type(type);
+    return this;
+  }
 }
