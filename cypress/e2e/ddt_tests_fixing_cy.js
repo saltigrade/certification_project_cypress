@@ -18,9 +18,9 @@ describe("Data driven tests", () => {
       const startBalance = project.startBalance;
       const type = project.type;
       // 1. pokus: Kontrola přes FE, kde již vytvořen účet, ale hází chybu
-      // new DashboardPage()
-      //   .accountBalanceHasText(startBalance)
-      //   .accountTypeHasText(type);
+      //   new DashboardPage()
+      //     .accountBalanceHasText(startBalance)
+      //     .accountTypeHasText(type);
 
       // "Platný pokus" Dle logu se informace z json propíšou do testu, jsou vidět kombinace zůstatků na účtu
       // Do komentářů ti zde píšu, co jsem zkoušela, jak jsem uvažovala (čekala jsem, že všechny 3 pokusy budou fail)
